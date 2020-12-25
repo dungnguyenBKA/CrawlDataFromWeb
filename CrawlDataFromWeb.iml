@@ -12,5 +12,6 @@
     <orderEntry type="library" name="com.squareup.retrofit2:retrofit:2.9.0" level="project" />
     <orderEntry type="library" name="com.squareup.retrofit2:converter-gson:2.9.0" level="project" />
     <orderEntry type="library" name="org.postgresql:postgresql:42.0.0.jre7" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:8.0.21" level="project" />
   </component>
 </module>

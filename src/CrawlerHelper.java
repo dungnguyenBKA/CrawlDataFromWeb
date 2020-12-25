@@ -10,19 +10,24 @@ import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CrawlerHelper {
     interface OnDataResponseListener {
         void onResponse(Product product) throws IOException;
     }
 
+    public void setListener(OnDataResponseListener listener) {
+        this.listener = listener;
+    }
+
+
+
+
+
     private OnDataResponseListener listener;
     private ArrayList<String> categoriesUrl = new ArrayList<>();
 
-    public CrawlerHelper(ArrayList<String> categoriesUrl, OnDataResponseListener listener) {
-        this.categoriesUrl = categoriesUrl;
-        this.listener = listener;
-    }
 
     private ArrayList<String> getALlProductIdFromAnCategory(String url) throws IOException {
         ArrayList<String> listId = new ArrayList<>();
@@ -44,7 +49,7 @@ public class CrawlerHelper {
 
     public void loadAllProductDetailFromAnId(String productId) {
         TipeeService service = RetrofitHelper.getInstance().create(TipeeService.class);
-        service.getProduct(productId).enqueue(new Callback<Product>() {
+        service.getProduct(productId).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if (response.body() != null) {
@@ -63,12 +68,10 @@ public class CrawlerHelper {
         });
     }
 
-    public ArrayList<Product> crawlProducts() throws IOException {
-        ArrayList<Product> products = new ArrayList<>();
+    public void crawlProducts() throws IOException {
         for (String category : categoriesUrl) {
             ArrayList<String> urls = getALlProductIdFromAnCategory(category);
             loadAllProductDetailFromIds(urls);
         }
-        return products;
     }
 }

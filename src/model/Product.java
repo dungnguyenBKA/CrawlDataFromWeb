@@ -23,6 +23,59 @@ public class Product {
     private String thumbnail_url;
     @SerializedName("description")
     private String description;
+    @SerializedName("productset_group_name")
+    private String productset_group_name;
+    @SerializedName("discount_rate")
+    private int discount_rate;
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    @SerializedName("current_seller")
+    private Seller seller;
+
+    public QuantityProduct getQuantityProduct() {
+        return quantityProduct;
+    }
+
+    public void setQuantityProduct(QuantityProduct quantityProduct) {
+        this.quantityProduct = quantityProduct;
+    }
+
+    @SerializedName("stock_item")
+    private QuantityProduct quantityProduct;
+
+    public int getDiscount_rate() {
+        return discount_rate;
+    }
+
+    public void setDiscount_rate(int discount_rate) {
+        this.discount_rate = discount_rate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @SerializedName("categories")
+    private Category category;
+
+    public String getProductset_group_name() {
+        return productset_group_name;
+    }
+
+    public void setProductset_group_name(String productset_group_name) {
+        this.productset_group_name = productset_group_name;
+    }
 
     public String getId() {
         return id;
